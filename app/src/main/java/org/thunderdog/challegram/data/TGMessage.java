@@ -878,7 +878,7 @@ public abstract class TGMessage implements InvalidateContentProvider, TdlibDeleg
 
   private int computeBubbleLeft () {
     final int x;
-    if (needAvatar() && !isOutgoing()) {
+    if (needAvatar()) {
       x = xBubbleLeft1 + Screen.dp(40f);
     } else {
       x = Device.NEED_BIGGER_BUBBLE_OFFSETS ? xBubbleLeft2 : xBubbleLeft1;
@@ -1313,7 +1313,7 @@ public abstract class TGMessage implements InvalidateContentProvider, TdlibDeleg
   }
 
   protected boolean alignBubbleRight () {
-    return useBubbles() && (isOutgoingBubble() != Lang.rtl());
+      return false; 
   }
 
   private void updateContentPositions (boolean maxOnly) {
@@ -1493,6 +1493,7 @@ public abstract class TGMessage implements InvalidateContentProvider, TdlibDeleg
     if (isThreadHeader() && messagesController().getMessageThread().areComments()) {
       return false;
     }
+    if (chat != null && isOutgoing() && !isChannel()) return true;
     if (chat != null) {
       switch (chat.type.getConstructor()) {
         case TdApi.ChatTypeBasicGroup.CONSTRUCTOR: {
