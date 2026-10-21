@@ -48,6 +48,7 @@ jobs:
 
       - name: Setup (SDK, NDK, native libs)
         run: |
+          export TERM=xterm
           chmod +x scripts/setup.sh gradlew
           scripts/setup.sh
 
