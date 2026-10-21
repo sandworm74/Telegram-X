@@ -53,7 +53,7 @@ jobs:
           scripts/setup.sh
 
       - name: Build APK
-        run: ./gradlew assembleUniversalDebug --no-daemon
+        run: ./gradlew assembleLatestUniversalDebug --no-daemon
 
       - uses: actions/upload-artifact@v4
         with:
