@@ -45,7 +45,7 @@ jobs:
         run: |
           cat > local.properties <<EOF
           sdk.dir=$ANDROID_SDK_ROOT
-          app.id=${{ secrets.APP_ID }}
+          app.id=com.sandworm.tgx
           app.name=${{ secrets.APP_NAME }}
           app.download_url=https://telegram.org/dlx
           telegram.api_id=${{ secrets.TG_API_ID }}
