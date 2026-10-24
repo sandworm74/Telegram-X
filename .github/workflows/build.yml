@@ -68,7 +68,7 @@ jobs:
           scripts/setup.sh
 
       - name: Build APK
-        run: ./gradlew assembleLollipopUniversalRelease --no-daemon -x processLollipopUniversalReleaseGoogleServices
+        run: ./gradlew assembleLollipopUniversalRelease --no-daemon -x processLollipopUniversalReleaseGoogleServices -x validateApiTokens
 
       - uses: actions/upload-artifact@v4
         with:
