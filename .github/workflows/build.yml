@@ -60,7 +60,7 @@ jobs:
           scripts/setup.sh
 
       - name: Build APK
-        run: ./gradlew assembleLatestUniversalDebug --no-daemon
+        run: ./gradlew assembleLatestUniversalDebug --no-daemon -x processLatestUniversalDebugGoogleServices 
 
       - uses: actions/upload-artifact@v4
         with:
