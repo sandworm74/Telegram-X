@@ -1493,7 +1493,7 @@ public abstract class TGMessage implements InvalidateContentProvider, TdlibDeleg
     if (isThreadHeader() && messagesController().getMessageThread().areComments()) {
       return false;
     }
-    if (chat != null && isOutgoing() && !isChannel()) return true;
+    if (chat != null && !isChannel()) return true;
     if (chat != null) {
       switch (chat.type.getConstructor()) {
         case TdApi.ChatTypeBasicGroup.CONSTRUCTOR: {
