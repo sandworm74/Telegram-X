@@ -53,6 +53,14 @@ jobs:
           tgx.extension=none
           EOF
 
+      - name: Setup signing
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > release.jks
+          echo "keystore.file=${{ github.workspace }}/release.jks" > keystore.properties
+          echo "keystore.password=${{ secrets.KEYSTORE_PASSWORD }}" >> keystore.properties
+          echo "key.alias=${{ secrets.KEY_ALIAS }}" >> keystore.properties
+          echo "key.password=${{ secrets.KEY_PASSWORD }}" >> keystore.properties
+
       - name: Setup (SDK, NDK, native libs)
         run: |
           export TERM=xterm
@@ -60,7 +68,7 @@ jobs:
           scripts/setup.sh
 
       - name: Build APK
-        run: ./gradlew assembleLollipopUniversalDebug --no-daemon -x processLollipopUniversalDebugGoogleServices 
+        run: ./gradlew assembleLollipopUniversalRelease --no-daemon -x processLollipopUniversalReleaseGoogleServices
 
       - uses: actions/upload-artifact@v4
         with:
