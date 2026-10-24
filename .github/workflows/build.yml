@@ -20,6 +20,13 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
+      - name: Fetch LFS files
+        run: |
+          git lfs install
+          cd tdlib
+          git lfs fetch
+          git lfs checkout
+
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -27,7 +34,7 @@ jobs:
 
       - uses: android-actions/setup-android@v3
         with:
-            packages: ''
+          packages: ''
 
       - name: Install build deps
         run: |
