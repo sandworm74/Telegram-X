@@ -615,7 +615,7 @@ public class TGMessageSticker extends TGMessage implements AnimatedEmojiListener
     } else {
       int left = findStickerLeft();
       int desiredLeft = (int) (left + stickerWidth * stickersMaxRowSize - timePartWidth);
-      if (!useBubbles() || isOutgoingBubble()) {
+      if (false) {
         return desiredLeft;
       } else {
         return Math.max(left, desiredLeft);
@@ -624,7 +624,7 @@ public class TGMessageSticker extends TGMessage implements AnimatedEmojiListener
   }
 
   private int findStickerLeft () {
-    return isOutgoingBubble() ? (int) (useBubble() ? getContentX() : getActualRightContentEdge() - stickerWidth * stickersMaxRowSize) : getContentX();
+    return getContentX();
   }
 
   private final static Rect tmpRect = new Rect();
