@@ -71,6 +71,7 @@ jobs:
         run: ./gradlew assembleLollipopUniversalRelease --no-daemon -x processLollipopUniversalReleaseGoogleServices -x validateApiTokens
 
       - name: Sign APK
+        id: sign_app
         uses: r0adkll/sign-android-release@v1
         with:
           releaseDirectory: app/build/outputs/apk/lollipopUniversal/release
@@ -78,6 +79,8 @@ jobs:
           alias: ${{ secrets.KEY_ALIAS }}
           keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
           keyPassword: ${{ secrets.KEY_PASSWORD }}
+        env:
+          BUILD_TOOLS_VERSION: "34.0.0"
 
       - uses: actions/upload-artifact@v4
         with:
